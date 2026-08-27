@@ -7,6 +7,7 @@
 <meta name="robots" content="noindex, nofollow">
 <link rel="icon" type="image/png" href="favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -21,7 +22,7 @@
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
   body {
-    font-family: 'Inter', -apple-system, sans-serif;
+    font-family: 'Inter', -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
     background: var(--cream);
     color: var(--ink);
     min-height: 100vh;
@@ -67,7 +68,7 @@
   .hero-inner { position: relative; z-index: 1; text-align: center; }
 
   .hero-kicker {
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: 'IBM Plex Mono', 'Consolas', 'SFMono-Regular', Menlo, monospace;
     font-size: 12.5px;
     letter-spacing: 0.14em;
     text-transform: uppercase;
@@ -76,7 +77,7 @@
   }
 
   .hero-title {
-    font-family: 'Space Grotesk', sans-serif;
+    font-family: 'Space Grotesk', 'Trebuchet MS', 'Segoe UI Semibold', sans-serif;
     font-size: 46px;
     font-weight: 700;
     letter-spacing: -0.01em;
@@ -99,7 +100,7 @@
   .stats {
     text-align: center;
     padding: 1.75rem 1.5rem 1.5rem;
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: 'IBM Plex Mono', 'Consolas', 'SFMono-Regular', Menlo, monospace;
     font-size: 13px;
     letter-spacing: 0.03em;
     color: var(--teal);
@@ -122,7 +123,7 @@
   .program { padding: 0 1.5rem; }
 
   .section-label {
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: 'IBM Plex Mono', 'Consolas', 'SFMono-Regular', Menlo, monospace;
     font-size: 12px;
     letter-spacing: 0.12em;
     text-transform: uppercase;
@@ -140,7 +141,7 @@
   .tab-btn {
     flex: 1;
     padding: 12px;
-    font-family: 'Space Grotesk', sans-serif;
+    font-family: 'Space Grotesk', 'Trebuchet MS', 'Segoe UI Semibold', sans-serif;
     font-size: 14.5px;
     font-weight: 700;
     background: transparent;
@@ -178,7 +179,7 @@
   .program-row:last-child { border-bottom: none; }
 
   .program-time {
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: 'IBM Plex Mono', 'Consolas', 'SFMono-Regular', Menlo, monospace;
     font-size: 14px;
     font-weight: 600;
     min-width: 54px;
@@ -194,7 +195,7 @@
     text-align: center;
     padding: 2.5rem 1.5rem 0.5rem;
     font-size: 13px;
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: 'IBM Plex Mono', 'Consolas', 'SFMono-Regular', Menlo, monospace;
     color: #9a9fa8;
   }
 
@@ -222,7 +223,7 @@
     color: var(--ink);
     text-align: center;
     cursor: pointer;
-    font-family: 'Inter', sans-serif;
+    font-family: 'Inter', -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
     width: 100%;
     transition: border-color 0.15s ease, transform 0.1s ease;
   }
@@ -270,7 +271,7 @@
   }
 
   .modal-eyebrow {
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: 'IBM Plex Mono', 'Consolas', 'SFMono-Regular', Menlo, monospace;
     font-size: 11px;
     letter-spacing: 0.12em;
     text-transform: uppercase;
@@ -279,7 +280,7 @@
   }
 
   .modal-title {
-    font-family: 'Space Grotesk', sans-serif;
+    font-family: 'Space Grotesk', 'Trebuchet MS', 'Segoe UI Semibold', sans-serif;
     font-size: 20px;
     font-weight: 700;
     margin-bottom: 14px;
@@ -323,7 +324,7 @@
     flex: 1;
     text-align: center;
     padding: 12px 8px;
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: 'IBM Plex Mono', 'Consolas', 'SFMono-Regular', Menlo, monospace;
     font-size: 12.5px;
     letter-spacing: 0.05em;
     text-transform: uppercase;
@@ -339,7 +340,7 @@
   .exhibitor-search {
     width: 100%;
     padding: 12px 16px;
-    font-family: 'Inter', sans-serif;
+    font-family: 'Inter', -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
     font-size: 14px;
     border: 1.5px solid var(--ink);
     border-radius: 999px;
@@ -361,15 +362,25 @@
   .footer {
     text-align: center;
     padding: 2.75rem 1.5rem 0.5rem;
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: 'IBM Plex Mono', 'Consolas', 'SFMono-Regular', Menlo, monospace;
     font-size: 12px;
     letter-spacing: 0.04em;
     color: #9a9fa8;
   }
+
+  .back-to-top {
+    display: block;
+    text-align: center;
+    margin-top: 1.5rem;
+    font-family: 'IBM Plex Mono', 'Consolas', 'SFMono-Regular', Menlo, monospace;
+    font-size: 12.5px;
+    color: var(--teal);
+    text-decoration: none;
+  }
 </style>
 </head>
 <body>
-<div class="page">
+<div class="page" id="top">
 
   <nav class="quicknav">
     <a href="#ohjelma">Ohjelma</a>
@@ -424,6 +435,7 @@
     <input type="text" class="exhibitor-search" id="exhibitor-search" placeholder="Hae yritystä..." oninput="filterExhibitors(this.value)">
     <div class="exhibitor-grid" id="exhibitor-grid"></div>
     <p class="exhibitor-empty" id="exhibitor-empty">Ei osumia haulle.</p>
+    <a class="back-to-top" href="#top">↑ Takaisin ylös</a>
   </div>
 
   <p class="footer">Ikaalinen Spa & Resort · MegaMiljardit 16.–17.9.2026</p>
