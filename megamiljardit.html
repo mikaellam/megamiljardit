@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MegaMiljardit — Ikaalisten Kylpylä 16.-17.9.2026</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1b1a34;
+    --cream: #fbf6ef;
+    --coral: #ff6f59;
+    --teal: #0f6b66;
+    --mustard: #f2b807;
+    --paper: #ffffff;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', -apple-system, sans-serif;
+    background: var(--cream);
+    color: var(--ink);
+    min-height: 100vh;
+    line-height: 1.6;
+  }
+
+  .page { max-width: 700px; margin: 0 auto; padding-bottom: 3rem; }
+
+  /* ---------- HERO ---------- */
+
+  .hero {
+    background: var(--ink);
+    color: var(--cream);
+    padding: 3.5rem 1.75rem 3rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: "";
+    position: absolute;
+    top: -60px;
+    right: -60px;
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
+    background: var(--coral);
+    opacity: 0.18;
+  }
+
+  .hero::after {
+    content: "";
+    position: absolute;
+    bottom: -40px;
+    left: -40px;
+    width: 140px;
+    height: 140px;
+    background: var(--mustard);
+    opacity: 0.15;
+    transform: rotate(20deg);
+  }
+
+  .hero-inner { position: relative; z-index: 1; text-align: center; }
+
+  .hero-kicker {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12.5px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--mustard);
+    margin-bottom: 1rem;
+  }
+
+  .hero-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 46px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    margin-bottom: 0.6rem;
+  }
+
+  .hero-sub {
+    font-size: 16px;
+    color: rgba(251,246,239,0.75);
+  }
+
+  .ticket-edge {
+    height: 14px;
+    background:
+      radial-gradient(circle at 10px 0, transparent 7px, var(--cream) 7px) top / 20px 14px repeat-x;
+  }
+
+  /* ---------- STATS ---------- */
+
+  .stats {
+    text-align: center;
+    padding: 1.75rem 1.5rem 1.5rem;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 13px;
+    letter-spacing: 0.03em;
+    color: var(--teal);
+    text-transform: uppercase;
+  }
+
+  .stats span.divider { color: #c7cbd3; margin: 0 12px; }
+
+  /* ---------- INTRO ---------- */
+
+  .intro {
+    padding: 1.75rem 1.75rem 2.25rem;
+    font-size: 16px;
+    text-align: center;
+    color: #3a3e46;
+  }
+
+  /* ---------- PROGRAM ---------- */
+
+  .program { padding: 0 1.5rem; }
+
+  .section-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--teal);
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+
+  .tabs {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 1.25rem;
+  }
+
+  .tab-btn {
+    flex: 1;
+    padding: 12px;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 14.5px;
+    font-weight: 700;
+    background: transparent;
+    border: 1.5px solid var(--ink);
+    border-radius: 999px;
+    cursor: pointer;
+    color: var(--ink);
+    transition: all 0.15s ease;
+  }
+
+  .tab-btn.active {
+    background: var(--ink);
+    color: var(--cream);
+  }
+
+  .day-list {
+    display: none;
+    flex-direction: column;
+    background: var(--paper);
+    border-radius: 14px;
+    padding: 0.5rem 1.5rem;
+    box-shadow: 0 1px 3px rgba(27,26,52,0.08);
+  }
+
+  .day-list.active { display: flex; }
+
+  .program-row {
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+    padding: 13px 0;
+    border-bottom: 1px dashed #dcdfe4;
+  }
+
+  .program-row:last-child { border-bottom: none; }
+
+  .program-time {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 14px;
+    font-weight: 600;
+    min-width: 54px;
+    color: var(--coral);
+  }
+
+  .program-label {
+    font-size: 14.5px;
+    color: var(--ink);
+  }
+
+  .menu-note {
+    text-align: center;
+    padding: 2.5rem 1.5rem 0.5rem;
+    font-size: 13px;
+    font-family: 'IBM Plex Mono', monospace;
+    color: #9a9fa8;
+  }
+
+  /* ---------- EXHIBITORS (badge grid) ---------- */
+
+  .exhibitors { padding: 2.5rem 1.5rem 0; }
+
+  .exhibitor-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  @media (min-width: 480px) {
+    .exhibitor-grid { grid-template-columns: repeat(3, 1fr); }
+  }
+
+  .exhibitor-item {
+    background: var(--paper);
+    border: 1px dashed #cfd3da;
+    border-radius: 10px;
+    padding: 13px 10px;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--ink);
+    text-align: center;
+    cursor: pointer;
+    font-family: 'Inter', sans-serif;
+    width: 100%;
+    transition: border-color 0.15s ease, transform 0.1s ease;
+  }
+
+  .exhibitor-item:hover {
+    border-color: var(--teal);
+    transform: translateY(-1px);
+  }
+
+  /* ---------- MODAL (badge card) ---------- */
+
+  .modal-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(27,26,52,0.55);
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+    z-index: 10;
+  }
+
+  .modal-overlay.active { display: flex; }
+
+  .modal-box {
+    background: var(--paper);
+    border-radius: 16px;
+    max-width: 420px;
+    width: 100%;
+    padding: 1.9rem;
+    position: relative;
+    border-top: 6px solid var(--coral);
+  }
+
+  .modal-close {
+    position: absolute;
+    top: 14px;
+    right: 16px;
+    border: none;
+    background: none;
+    font-size: 22px;
+    cursor: pointer;
+    color: #9a9fa8;
+    line-height: 1;
+  }
+
+  .modal-eyebrow {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--teal);
+    margin-bottom: 6px;
+  }
+
+  .modal-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 14px;
+    color: var(--ink);
+    padding-right: 1.5rem;
+  }
+
+  .modal-row {
+    font-size: 14px;
+    margin-bottom: 8px;
+    color: var(--ink);
+  }
+
+  .modal-row a { color: var(--teal); text-decoration: none; }
+
+  .modal-desc {
+    font-size: 14px;
+    margin: 12px 0 0;
+    padding-top: 12px;
+    border-top: 1px dashed #dcdfe4;
+    color: #3a3e46;
+    line-height: 1.6;
+  }
+
+  @media (max-width: 480px) {
+    .hero-title { font-size: 34px; }
+  }
+
+  /* ---------- QUICK NAV ---------- */
+
+  .quicknav {
+    position: sticky;
+    top: 0;
+    z-index: 5;
+    display: flex;
+    background: var(--cream);
+    border-bottom: 1px solid #e4e0d6;
+  }
+
+  .quicknav a {
+    flex: 1;
+    text-align: center;
+    padding: 12px 8px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12.5px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--ink);
+    text-decoration: none;
+    border-right: 1px solid #e4e0d6;
+  }
+
+  .quicknav a:last-child { border-right: none; }
+
+  /* ---------- EXHIBITOR SEARCH ---------- */
+
+  .exhibitor-search {
+    width: 100%;
+    padding: 12px 16px;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    border: 1.5px solid var(--ink);
+    border-radius: 999px;
+    background: var(--paper);
+    color: var(--ink);
+    margin-bottom: 1rem;
+  }
+
+  .exhibitor-search::placeholder { color: #9a9fa8; }
+
+  .exhibitor-empty {
+    text-align: center;
+    font-size: 13.5px;
+    color: #9a9fa8;
+    padding: 1rem 0;
+    display: none;
+  }
+
+  .footer {
+    text-align: center;
+    padding: 2.75rem 1.5rem 0.5rem;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.04em;
+    color: #9a9fa8;
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <nav class="quicknav">
+    <a href="#ohjelma">Ohjelma</a>
+    <a href="#yritykset">Yritykset</a>
+  </nav>
+
+  <div class="hero">
+    <div class="hero-inner">
+      <p class="hero-kicker">Ikaalisten Kylpylä · 16.–17.9.2026</p>
+      <h1 class="hero-title">MegaMiljardit</h1>
+      <p class="hero-sub">Syksyn suurin myyntitapahtuma · Teemana 90-luku</p>
+    </div>
+  </div>
+  <div class="ticket-edge"></div>
+
+  <div class="intro">
+    <p>Tervetuloa MegaMiljardeille! Täältä löydät molempien päivien ohjelman, menun ja kaikki 31 mukana olevaa yritystä kätevästi yhdestä paikasta koko tapahtuman ajan.</p>
+  </div>
+
+  <div class="program" id="ohjelma">
+    <p class="section-label">Ohjelma</p>
+    <div class="tabs">
+      <button class="tab-btn active" id="tab-ke" onclick="showDay('ke')">Keskiviikko 16.9</button>
+      <button class="tab-btn" id="tab-to" onclick="showDay('to')">Torstai 17.9</button>
+    </div>
+
+    <div class="day-list active" id="day-ke">
+      <div class="program-row"><span class="program-time">10:00</span><span class="program-label">Osastojen rakennus</span></div>
+      <div class="program-row"><span class="program-time">13:00</span><span class="program-label">Tavarantoimittajien keittolounas</span></div>
+      <div class="program-row"><span class="program-time">14:00</span><span class="program-label">Osastot valmiina</span></div>
+      <div class="program-row"><span class="program-time">15:00</span><span class="program-label">MegaMiljardit aukeaa</span></div>
+      <div class="program-row"><span class="program-time">20:00</span><span class="program-label">Illallinen</span></div>
+      <div class="program-row"><span class="program-time">22:00</span><span class="program-label">Trubaduuri Julius Tuomarla (Old Ikaly Pub)</span></div>
+    </div>
+
+    <div class="day-list" id="day-to">
+      <div class="program-row"><span class="program-time">09:00</span><span class="program-label">MegaMiljardit aukeaa</span></div>
+      <div class="program-row"><span class="program-time">12:00</span><span class="program-label">Lounas</span></div>
+      <div class="program-row"><span class="program-time">15:00</span><span class="program-label">Messubaari aukeaa</span></div>
+      <div class="program-row"><span class="program-time">19:00</span><span class="program-label">Illallinen</span></div>
+      <div class="program-row"><span class="program-time">20:30</span><span class="program-label">Live-bändi</span></div>
+      <div class="program-row"><span class="program-time">22:00</span><span class="program-label">Karaoke aukeaa</span></div>
+      <div class="program-row"><span class="program-time">23:00</span><span class="program-label">Hodaribaari aukeaa</span></div>
+      <div class="program-row"><span class="program-time">00:30</span><span class="program-label">Hyvää yötä</span></div>
+    </div>
+  </div>
+
+  <p class="menu-note">Illallismenut julkaistaan pian</p>
+
+  <div class="exhibitors" id="yritykset">
+    <p class="section-label">Mukana MegaMiljardeilla</p>
+    <input type="text" class="exhibitor-search" id="exhibitor-search" placeholder="Hae yritystä..." oninput="filterExhibitors(this.value)">
+    <div class="exhibitor-grid" id="exhibitor-grid"></div>
+    <p class="exhibitor-empty" id="exhibitor-empty">Ei osumia haulle.</p>
+  </div>
+
+  <p class="footer">Ikaalisten Kylpylä · MegaMiljardit 16.–17.9.2026</p>
+
+</div>
+
+<div class="modal-overlay" id="modal-overlay" onclick="if(event.target===this)closeModal()">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal()" aria-label="Sulje">&times;</button>
+    <p class="modal-eyebrow">Näytteilleasettaja</p>
+    <p class="modal-title" id="modal-title"></p>
+    <div id="modal-body"></div>
+  </div>
+</div>
+
+<script>
+var exhibitors = [
+  {name:"Airam Electric Oy Ab", phone:"040 5083 908", contact:"Keijo Tikkanen", email:"keijo.tikkanen@airam.fi", desc:"Valaisimet, lamput, sähkötarvikkeet, paristot, termokset, paristovalot", site:"airam.fi"},
+  {name:"Akowest Oy", phone:"00400 4630 16, 09 7599 610", contact:"Kurt Westerlund", email:"kurt.westerlund@akowest.fi", desc:"Askartelu, reput, koululaistarvikkeet", site:"kidsfun.fi"},
+  {name:"AV-Komponentti Oy", phone:"050 5617 883", contact:"Olli Kaukomaa", email:"olli.kaukomaa@avkomponentti.fi", desc:"Kauneus, terveys, hyvinvointi, keittiön pienkoneet, radiot, RTV tarvikkeet", site:"avkomponentti.fi"},
+  {name:"Cailap Oy Marketing", phone:"050 5674 862, 010 8507 300", contact:"Maarita Eriksson", email:"maarita.eriksson@cailap.fi", desc:"Hiustarvikkeet, kauneusvälineet, koru sekä luku- ja aurinkolasit, oman Cailap-brändin tuotteet, myös Muumi-lisenssituotteet", site:"cailap.com"},
+  {name:"Cenor Finland Oy", phone:"040 751 0009", contact:"Jari Hietala", email:"jari.hietala@cenor.fi", desc:"Mobiilitarvikkeet, varavirtalähteet, lataustarvikkeet, kuulokkeet, audio ja projektorit", site:"cenor.fi"},
+  {name:"Emendo Oy", phone:"+358 400 567 837", contact:"Teemu Finne", email:"teemu.finne@emendo.fi", desc:"Sauna- ja hyvinvointituotteet", site:"emendo.fi, kolosauna.fi"},
+  {name:"Familon | Wendre Finland Oy", phone:"+358 40 7412095", contact:"Mirva Tähtinen", email:"mirva.tahtinen@wendre.com", desc:"Tyynyt, peitot ja sängyt – kaikki parempaan uneen", site:"Familon.com, wendregroup.com"},
+  {name:"Finlayson Co / Vallila & Finlayson", phone:"+358 40 7759148", contact:"Sonja Karjalainen", email:"sonja.karjalainen@finlaysonco.fi", desc:"Sisustustuotteet, kodintekstiilit, matot, verhot, kylpy- ja vuodetekstiilit", site:"Vallila.fi, Finlayson.fi"},
+  {name:"Foxtel Oy", phone:"0400-431906", contact:"Turkka Hovila", email:"turkka.hovila@foxtel.fi", desc:"Teknokemian valmistaja, kosmetiikka-, hygienia- ja puhdistustuotteet", site:"foxtel.fi"},
+  {name:"Fredman group", phone:"040 832 6059", contact:"Myyntipäällikkö Sami Rotkus", email:"sami.rotkus@fredmangroup.com", desc:"Päivittäistavarakauppa", site:"fredmangroup.com"},
+  {name:"Havi Oy", phone:"+358 108 434 022", contact:"Kirsi Ala-Kurikka", email:"kirsi.ala-kurikka@havi.fi", desc:"Kynttilät, kattaus ja kerta-astiat", site:"havi.fi"},
+  {name:"HL Group Oy", phone:"020 7445 200, 040 5701717", contact:"Erkka Hyvärinen", email:"erkka.hyvarinen@hlgroup.fi", desc:"Autokemikaalit, voiteluaineet, suodattimet, akut, pyyhkijän sulat, autotarvikkeet", site:"hlgroup.fi"},
+  {name:"Inbound Finland Oy", phone:"040 5000 774", contact:"Tom Tikkanen", email:"tom.tikkanen@inbound.fi", desc:"Prego, pienkodinkoneet, sähköiset hiustenhoitotuotteet, partakoneet, wellness-tuotteet, hierontatuotteet sekä kulutuselektroniikka", site:"inbound.fi"},
+  {name:"Juhani Mutka Oy", phone:"0400 664 662", contact:"Kimmo Mutka", email:"kimmo.mutka@mutka.fi", desc:"Käsineet", site:"mutka.fi"},
+  {name:"Kauppahuone Harju Oy", phone:"040 586 8930", contact:"Jouni Hakala", email:"jouni.hakala@harju.fi", desc:"Sähkötarvikkeet, LVI-tarvikkeet, lämmitys ja viilennys, puutarhatarvikkeet ja kastelu, tikkaat, peitteet, valaisimet", site:"harju.fi"},
+  {name:"Oy Martinex Ab", phone:"0400-359647", contact:"Sami Nikander", email:"", desc:"Leluja, pelejä ja kodintuotteita (mm. Muumit, Iloleipuri, Peliko)", site:"martinex.fi"},
+  {name:"Metsä Tissue Oy", phone:"0500 6234 92", contact:"Tuure Viinikainen", email:"tuure.viinikainen@metsagroup.com", desc:"Lambi, Serla, Katrin ja SAGA", site:"metsatissue.com"},
+  {name:"Sinituote Oy", phone:"+358 19 7600 200", contact:"Veli Saarela", email:"veli.saarela@sinituote.fi", desc:"Siivoustuotteet sekä vaatehuolto", site:"sini.fi"},
+  {name:"Orkla Care Oy", phone:"040 5094 242", contact:"Mikko Seppänen", email:"mikko.seppanen@orkla.fi", desc:"Teknokemia, haavanhoito, terveystuotteet", site:"orkla.fi"},
+  {name:"Soft Protector Oy", phone:"+358 40 0425 818", contact:"Timo Hirvelä", email:"timo@softcare.fi", desc:"Softcare suoja- ja puhdistusaineet", site:"softcare.fi"},
+  {name:"Orkla Suomi", phone:"040 5473 227", contact:"Toni Autio", email:"toni.autio@orkla.fi", desc:"Taffel, Kantolan ja Panda", site:"orkla.fi"},
+  {name:"Stiga Sports Suomi Oy", phone:"+358 40 5228 468", contact:"Danny Vane-Tempest", email:"dvt@stigasports.se", desc:"Stiga talvituotteet, pelit, potkulaudat, pöytätennis ja muut kesätuotteet", site:"stigasports.se"},
+  {name:"Oy Orthex Finland Ab", phone:"040 7510 040", contact:"Minna Erkkilä", email:"minna.erkkila@orthexgroup.com", desc:"Säilytyslaatikot, lajitteluratkaisut, keittiötuotteet, talousmuovit, ruukut", site:"orthexgroup.com"},
+  {name:"Tactic Games Oy / Ab Plasto Oy", phone:"0449818718", contact:"Tero Sjövall", email:"tero.sjovall@tactic.net", desc:"Lautapelit, palapelit, lelut (Plasto, Lumo Stars, Heros, Picasso Tiles, Bruder), kirjat, pulkat, lumituotteet, darts", site:"tactic.net, plasto.fi"},
+  {name:"Philip Morris Finland Oy", phone:"+358 50 5535357", contact:"Eerika Kapanen", email:"eerika.kapanen@pmi.com", desc:"Nikotiinituotteet", site:"pmi.com"},
+  {name:"Pierre Robert Oy", phone:"040 626 5252", contact:"Kati Määttä", email:"kati.maatta@pierrerobert.fi", desc:"Alusvaatepukeutuminen, uima-asut, sukat ja sukkahousut", site:"blackhorse.fi, norlyn.fi, finnwear.fi, pierrerobert.fi"},
+  {name:"Prima Pet Premium Oy", phone:"045 8519 291", contact:"Katja Saario", email:"katja.saario@hauhau.fi", desc:"Lemmikkieläinruokien valmistaja, maahantuoja ja tukkuliike", site:"primapetpremium.fi"},
+  {name:"RRH Finland Oy", phone:"050 4003 871", contact:"Pekka Räty", email:"pekka.raty@eu.spectrumbrands.com", desc:"Remington-pienlaitteet, Russell Hobbs -pienlaitteet, George Foreman -grillit", site:"fi.remington-europe.com, fi.russellhobbs.com"},
+  {name:"Toolcat Oy", phone:"050 521 6052, 0 44 270 3795", contact:"Juha Parkkinen", email:"juha.parkkinen@toolcat.fi", desc:"Käsityökalut, Berdal, Sulzer, Ecopoxy, Edma, Idealgas, Irwin, Jen, Kapro, Narex, Patrol, Procat, Schwan, Tajima, Urko", site:"toolcat.fi"},
+  {name:"Tukkunet Oy", phone:"+358 20 7349 000", contact:"Timo Taskila", email:"timo.taskila@tukku.net", desc:"Kosmetiikka, lemmikki, lastentarvike, elintarvike, jalkine ja kalastus", site:"tukku.net"},
+  {name:"VARTA Consumer Finland Oy", phone:"0400 845 248, 040 511 5112", contact:"Topias Takkunen", email:"topias.takkunen@varta-ag.com", desc:"VARTA paristot, akkuparistot, taskulamput, varavirtalähteet", site:"varta-consumer.fi"}
+];
+
+var grid = document.getElementById('exhibitor-grid');
+var buttons = [];
+exhibitors.forEach(function(ex, i){
+  var btn = document.createElement('button');
+  btn.className = 'exhibitor-item';
+  btn.textContent = ex.name;
+  btn.onclick = function(){ openModal(i); };
+  grid.appendChild(btn);
+  buttons.push(btn);
+});
+
+function filterExhibitors(query){
+  var q = query.trim().toLowerCase();
+  var visibleCount = 0;
+  buttons.forEach(function(btn, i){
+    var match = exhibitors[i].name.toLowerCase().indexOf(q) !== -1;
+    btn.style.display = match ? '' : 'none';
+    if(match) visibleCount++;
+  });
+  document.getElementById('exhibitor-empty').style.display = visibleCount === 0 ? 'block' : 'none';
+}
+
+function openModal(i){
+  var ex = exhibitors[i];
+  document.getElementById('modal-title').textContent = ex.name;
+  var rows = '';
+  if(ex.contact) rows += '<p class="modal-row">' + ex.contact + '</p>';
+  if(ex.phone) rows += '<p class="modal-row">Puh. ' + ex.phone + '</p>';
+  if(ex.email) rows += '<p class="modal-row"><a href="mailto:' + ex.email + '">' + ex.email + '</a></p>';
+  if(ex.site) rows += '<p class="modal-row">' + ex.site + '</p>';
+  if(ex.desc) rows += '<p class="modal-desc">' + ex.desc + '</p>';
+  document.getElementById('modal-body').innerHTML = rows;
+  document.getElementById('modal-overlay').classList.add('active');
+}
+
+function closeModal(){
+  document.getElementById('modal-overlay').classList.remove('active');
+}
+
+function showDay(day) {
+  document.getElementById('day-ke').classList.toggle('active', day === 'ke');
+  document.getElementById('day-to').classList.toggle('active', day === 'to');
+  document.getElementById('tab-ke').classList.toggle('active', day === 'ke');
+  document.getElementById('tab-to').classList.toggle('active', day === 'to');
+}
+</script>
+</body>
+</html>
