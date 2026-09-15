@@ -34,59 +34,13 @@
   /* ---------- HERO ---------- */
 
   .hero {
-    background: var(--ink);
-    color: var(--cream);
-    padding: 3.5rem 1.75rem 3rem;
-    position: relative;
-    overflow: hidden;
+    line-height: 0;
   }
 
-  .hero::before {
-    content: "";
-    position: absolute;
-    top: -60px;
-    right: -60px;
-    width: 220px;
-    height: 220px;
-    border-radius: 50%;
-    background: var(--coral);
-    opacity: 0.18;
-  }
-
-  .hero::after {
-    content: "";
-    position: absolute;
-    bottom: -40px;
-    left: -40px;
-    width: 140px;
-    height: 140px;
-    background: var(--mustard);
-    opacity: 0.15;
-    transform: rotate(20deg);
-  }
-
-  .hero-inner { position: relative; z-index: 1; text-align: center; }
-
-  .hero-kicker {
-    font-family: 'IBM Plex Mono', 'Consolas', 'SFMono-Regular', Menlo, monospace;
-    font-size: 12.5px;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--mustard);
-    margin-bottom: 1rem;
-  }
-
-  .hero-title {
-    font-family: 'Space Grotesk', 'Trebuchet MS', 'Segoe UI Semibold', sans-serif;
-    font-size: 46px;
-    font-weight: 700;
-    letter-spacing: -0.01em;
-    margin-bottom: 0.6rem;
-  }
-
-  .hero-sub {
-    font-size: 16px;
-    color: rgba(251,246,239,0.75);
+  .hero img {
+    width: 100%;
+    height: auto;
+    display: block;
   }
 
   .ticket-edge {
@@ -191,12 +145,92 @@
     color: var(--ink);
   }
 
+  .program-venue {
+    font-size: 12.5px;
+    color: #9a9fa8;
+    margin-left: 4px;
+  }
+
   .menu-note {
     text-align: center;
     padding: 2.5rem 1.5rem 0.5rem;
     font-size: 13px;
     font-family: 'IBM Plex Mono', 'Consolas', 'SFMono-Regular', Menlo, monospace;
     color: #9a9fa8;
+  }
+
+  .menu-section { padding: 2.5rem 1.5rem 0; }
+
+  .menu-day {
+    background: var(--paper);
+    border: 1px dashed #cfd3da;
+    border-radius: 12px;
+    margin-bottom: 10px;
+    overflow: hidden;
+  }
+
+  .menu-day summary {
+    padding: 14px 18px;
+    font-family: 'Space Grotesk', 'Trebuchet MS', 'Segoe UI Semibold', sans-serif;
+    font-weight: 700;
+    font-size: 15px;
+    color: var(--ink);
+    cursor: pointer;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .menu-day summary::-webkit-details-marker { display: none; }
+
+  .menu-day summary::after {
+    content: "+";
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 18px;
+    color: var(--teal);
+  }
+
+  .menu-day[open] summary::after { content: "–"; }
+
+  .menu-day-body { padding: 0 18px 18px; }
+
+  .menu-group-title {
+    font-family: 'IBM Plex Mono', 'Consolas', 'SFMono-Regular', Menlo, monospace;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--teal);
+    margin: 14px 0 6px;
+  }
+
+  .menu-group-title:first-child { margin-top: 0; }
+
+  .menu-item {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 7px 0;
+    border-bottom: 1px dashed #eef0f2;
+    font-size: 14px;
+    color: var(--ink);
+  }
+
+  .menu-item:last-child { border-bottom: none; }
+
+  .menu-tags {
+    font-family: 'IBM Plex Mono', 'Consolas', 'SFMono-Regular', Menlo, monospace;
+    font-size: 11.5px;
+    color: #9a9fa8;
+    white-space: nowrap;
+  }
+
+  .menu-legend {
+    font-family: 'IBM Plex Mono', 'Consolas', 'SFMono-Regular', Menlo, monospace;
+    font-size: 11px;
+    color: #9a9fa8;
+    text-align: center;
+    margin-top: 4px;
   }
 
   /* ---------- EXHIBITORS (badge grid) ---------- */
@@ -305,10 +339,6 @@
     line-height: 1.6;
   }
 
-  @media (max-width: 480px) {
-    .hero-title { font-size: 34px; }
-  }
-
   /* ---------- QUICK NAV ---------- */
 
   .quicknav {
@@ -384,15 +414,12 @@
 
   <nav class="quicknav">
     <a href="#ohjelma">Ohjelma</a>
+    <a href="#menu">Menu</a>
     <a href="#yritykset">Yritykset</a>
   </nav>
 
   <div class="hero">
-    <div class="hero-inner">
-      <p class="hero-kicker">Ikaalinen Spa & Resort · 16.–17.9.2026</p>
-      <h1 class="hero-title">MegaMiljardit</h1>
-      <p class="hero-sub">Syksyn suurin myyntitapahtuma · Teemana 90-luku</p>
-    </div>
+    <img src="hero-bg.png" alt="MegaMiljardit — Ikaalinen Spa & Resort, 16.–17.9.2026">
   </div>
   <div class="ticket-edge"></div>
 
@@ -411,24 +438,75 @@
       <div class="program-row"><span class="program-time">10:00</span><span class="program-label">Osastojen rakennus</span></div>
       <div class="program-row"><span class="program-time">13:00</span><span class="program-label">Tavarantoimittajien keittolounas</span></div>
       <div class="program-row"><span class="program-time">14:00</span><span class="program-label">Osastot valmiina</span></div>
-      <div class="program-row"><span class="program-time">15:00</span><span class="program-label">MegaMiljardit aukeaa</span></div>
-      <div class="program-row"><span class="program-time">20:00</span><span class="program-label">Illallinen</span></div>
-      <div class="program-row"><span class="program-time">22:00</span><span class="program-label">Trubaduuri Julius Tuomarla (Old Ikaly Pub)</span></div>
+      <div class="program-row"><span class="program-time">15:00</span><span class="program-label">MegaMiljardit aukeaa<span class="program-venue">(Spa Arena)</span></span></div>
+      <div class="program-row"><span class="program-time">20:00</span><span class="program-label">Illallinen<span class="program-venue">(Ravintola Kyrös)</span></span></div>
+      <div class="program-row"><span class="program-time">22:00</span><span class="program-label">Trubaduuri Julius Tuomarla<span class="program-venue">(Old Ikaly Pub)</span></span></div>
     </div>
 
     <div class="day-list" id="day-to">
-      <div class="program-row"><span class="program-time">09:00</span><span class="program-label">MegaMiljardit aukeaa</span></div>
-      <div class="program-row"><span class="program-time">12:00</span><span class="program-label">Lounas</span></div>
+      <div class="program-row"><span class="program-time">09:00</span><span class="program-label">MegaMiljardit aukeaa<span class="program-venue">(Spa Arena)</span></span></div>
+      <div class="program-row"><span class="program-time">12:00</span><span class="program-label">Lounas<span class="program-venue">(Ravintola Kyrös)</span></span></div>
       <div class="program-row"><span class="program-time">15:00</span><span class="program-label">Messubaari aukeaa</span></div>
-      <div class="program-row"><span class="program-time">19:00</span><span class="program-label">Illallinen</span></div>
-      <div class="program-row"><span class="program-time">20:30</span><span class="program-label">Live-bändi</span></div>
-      <div class="program-row"><span class="program-time">22:00</span><span class="program-label">Karaoke aukeaa</span></div>
-      <div class="program-row"><span class="program-time">23:00</span><span class="program-label">Hodaribaari aukeaa</span></div>
+      <div class="program-row"><span class="program-time">19:00</span><span class="program-label">Illallinen<span class="program-venue">(Ravintola Kyrös)</span></span></div>
+      <div class="program-row"><span class="program-time">20:30</span><span class="program-label">Live-bändi<span class="program-venue">("Joku Paikallinen Bändi")</span></span></div>
+      <div class="program-row"><span class="program-time">22:00</span><span class="program-label">Karaoke aukeaa<span class="program-venue">(Old Ikaly Pub)</span></span></div>
+      <div class="program-row"><span class="program-time">23:00</span><span class="program-label">Hodaribaari aukeaa<span class="program-venue">(Ravintola Kyrös)</span></span></div>
       <div class="program-row"><span class="program-time">00:30</span><span class="program-label">Hyvää yötä</span></div>
     </div>
   </div>
 
-  <p class="menu-note">Illallismenut julkaistaan pian</p>
+  <div class="menu-section" id="menu">
+    <p class="section-label">Illallismenu</p>
+
+    <details class="menu-day">
+      <summary>Keskiviikko 16.9</summary>
+      <div class="menu-day-body">
+        <p class="menu-group-title">Alkupalat &amp; salaatit</p>
+        <div class="menu-item"><span>Talon leipä ja levite</span><span class="menu-tags">L</span></div>
+        <div class="menu-item"><span>Vihreä salaatti ja sitruunavinaigrette</span><span class="menu-tags">M, G</span></div>
+        <div class="menu-item"><span>Waldorfin salaatti ja paahdettua saksanpähkinää</span><span class="menu-tags">L, G</span></div>
+        <div class="menu-item"><span>Savulohi caesar-salaatti</span><span class="menu-tags">L, G</span></div>
+        <div class="menu-item"><span>Tomaatti-mozzarella-salaatti</span><span class="menu-tags">L, G</span></div>
+        <div class="menu-item"><span>Dukkah-porkkanasalaatti, friteerattua kikhernettä</span><span class="menu-tags">M, G</span></div>
+
+        <p class="menu-group-title">Lisukkeet</p>
+        <div class="menu-item"><span>Rosmariiniperunaa</span><span class="menu-tags">L, G</span></div>
+        <div class="menu-item"><span>Paahdettuja seesamijuureksia</span><span class="menu-tags">M, G</span></div>
+
+        <p class="menu-group-title">Pääruoka</p>
+        <div class="menu-item"><span>Ylikypsää naudan rintaa, pippurikermakastiketta</span><span class="menu-tags">L, G</span></div>
+
+        <p class="menu-group-title">Jälkiruoka</p>
+        <div class="menu-item"><span>Mustikkajuustokakku, vaniljamascarpone</span><span class="menu-tags">L, G</span></div>
+      </div>
+    </details>
+
+    <details class="menu-day">
+      <summary>Torstai 17.9</summary>
+      <div class="menu-day-body">
+        <p class="menu-group-title">Alkupalat &amp; salaatit</p>
+        <div class="menu-item"><span>Talon leipä ja levite</span><span class="menu-tags">L</span></div>
+        <div class="menu-item"><span>Vihreä salaatti ja sitruunavinaigrette</span><span class="menu-tags">M, G</span></div>
+        <div class="menu-item"><span>Waldorfin salaatti ja paahdettua saksanpähkinää</span><span class="menu-tags">L, G</span></div>
+        <div class="menu-item"><span>Pestokana-salaatti</span><span class="menu-tags">L, G</span></div>
+        <div class="menu-item"><span>Herne, rucola, feta ja marinoitu shalottisipuli</span><span class="menu-tags">M, G</span></div>
+        <div class="menu-item"><span>Dukkah-porkkanasalaatti, friteerattua kikhernettä</span><span class="menu-tags">M, G</span></div>
+        <div class="menu-item"><span>Rapusalaatti ja Mary Rose -kastiketta</span><span class="menu-tags">L, G</span></div>
+
+        <p class="menu-group-title">Lisukkeet</p>
+        <div class="menu-item"><span>Perunamuusia</span><span class="menu-tags"></span></div>
+        <div class="menu-item"><span>Puolukkahillo ja suolakurkut</span><span class="menu-tags"></span></div>
+
+        <p class="menu-group-title">Pääruoka</p>
+        <div class="menu-item"><span>Hirvipata</span><span class="menu-tags"></span></div>
+
+        <p class="menu-group-title">Jälkiruoka</p>
+        <div class="menu-item"><span>New York cheesecake ja vadelmamelba</span><span class="menu-tags">L</span></div>
+      </div>
+    </details>
+
+    <p class="menu-legend">L = laktoositon · G = gluteeniton · M = maidoton</p>
+  </div>
 
   <div class="exhibitors" id="yritykset">
     <p class="section-label">Mukana MegaMiljardeilla</p>
