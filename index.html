@@ -2,613 +2,601 @@
 <html lang="fi">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MegaMiljardit — Ikaalinen Spa & Resort 16.-17.9.2026</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Kaivopäivät 2026</title>
+<meta name="description" content="Kaivopäivät, Ikaalinen Spa 28.–29.10.2026: ohjelma, ruokailut ja mukana olevat yritykset.">
 <meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#eef4f6" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0e1c22" media="(prefers-color-scheme: dark)">
 <link rel="icon" type="image/png" href="favicon.png">
+<link rel="apple-touch-icon" href="favicon.png">
+<link rel="preload" as="image" href="hero.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Saira:wght@500;600&display=swap" rel="stylesheet">
 <style>
+  /* Yksi kapea palsta, kuin vesihuoltoalan ohjelmavihko: aika vasemmalla, puhe ja puhuja oikealla. */
   :root {
-    --ink: #1b1a34;
-    --cream: #fbf6ef;
-    --coral: #ff6f59;
-    --teal: #0f6b66;
-    --mustard: #f2b807;
-    --paper: #ffffff;
+    --bg: #eef4f6;
+    --surface: #ffffff;
+    --ink: #15303b;
+    --muted: #587380;
+    --brand: #36708a;
+    --drop: #65a9c2;
+    --line: #d6e3e9;
+    --tint: #e3eff4;
+
+    --display: 'Saira', 'Arial Narrow', 'Segoe UI', Roboto, sans-serif;
+    --body: system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0e1c22;
+      --surface: #142831;
+      --ink: #e3eef2;
+      --muted: #94adb8;
+      --brand: #84c3db;
+      --drop: #65a9c2;
+      --line: #23404c;
+      --tint: #1a3440;
+      color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0e1c22;
+    --surface: #142831;
+    --ink: #e3eef2;
+    --muted: #94adb8;
+    --brand: #84c3db;
+    --drop: #65a9c2;
+    --line: #23404c;
+    --tint: #1a3440;
+    color-scheme: dark;
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
+  html { scroll-padding-top: 3.5rem; -webkit-text-size-adjust: 100%; }
+
   body {
-    font-family: 'Inter', -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-    background: var(--cream);
+    font-family: var(--body);
+    font-size: 16px;
+    line-height: 1.5;
+    background: var(--bg);
     color: var(--ink);
-    min-height: 100vh;
-    line-height: 1.6;
   }
 
-  .page { max-width: 700px; margin: 0 auto; padding-bottom: 3rem; }
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0 0 auto;
+    height: env(safe-area-inset-top, 0px);
+    z-index: 10;
+    background: var(--bg);
+  }
+
+  .page { max-width: 640px; margin: 0 auto; }
+
+  .gutter {
+    padding-left: max(16px, env(safe-area-inset-left, 0px));
+    padding-right: max(16px, env(safe-area-inset-right, 0px));
+  }
+
+  a { color: var(--brand); }
+
+  :focus-visible { outline: 2px solid var(--brand); outline-offset: 2px; }
+
+  /* ---------- NAV ---------- */
+
+  .nav {
+    position: sticky;
+    top: env(safe-area-inset-top, 0px);
+    z-index: 5;
+    background: var(--bg);
+    border-bottom: 1px solid var(--line);
+  }
+
+  .nav ul {
+    list-style: none;
+    display: flex;
+  }
+
+  .nav li { flex: 1; }
+
+  .nav a {
+    display: block;
+    text-align: center;
+    padding-block: 14px;
+    font-family: var(--display);
+    font-weight: 600;
+    font-size: 15px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--ink);
+    text-decoration: none;
+  }
 
   /* ---------- HERO ---------- */
 
-  .hero {
-    line-height: 0;
-  }
-
   .hero img {
-    width: 100%;
-    height: auto;
     display: block;
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    aspect-ratio: 2 / 1;
+    background: var(--tint);
   }
 
-  .ticket-edge {
-    height: 14px;
-    background:
-      radial-gradient(circle at 10px 0, transparent 7px, var(--cream) 7px) top / 20px 14px repeat-x;
-  }
+  /* ---------- SECTIONS ---------- */
 
-  /* ---------- STATS ---------- */
+  section { padding-block: 2rem 0.5rem; }
 
-  .stats {
-    text-align: center;
-    padding: 1.75rem 1.5rem 1.5rem;
-    font-family: 'IBM Plex Mono', 'Consolas', 'SFMono-Regular', Menlo, monospace;
-    font-size: 13px;
-    letter-spacing: 0.03em;
-    color: var(--teal);
+  h2 {
+    font-family: var(--display);
+    font-weight: 600;
+    font-size: 1.5rem;
+    line-height: 1.2;
+    letter-spacing: 0.02em;
+    color: var(--brand);
     text-transform: uppercase;
+    margin-bottom: 1rem;
+    text-wrap: balance;
   }
 
-  .stats span.divider { color: #c7cbd3; margin: 0 12px; }
+  /* ---------- DAY TABS ---------- */
 
-  /* ---------- INTRO ---------- */
+  .tabs {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4px;
+    padding: 4px;
+    background: var(--tint);
+    border-radius: 12px;
+    margin-bottom: 1rem;
+  }
 
-  .intro {
-    padding: 1.75rem 1.75rem 2.25rem;
+  .tab {
+    font-family: var(--display);
+    font-weight: 600;
     font-size: 16px;
-    text-align: center;
-    color: #3a3e46;
+    line-height: 1.2;
+    padding: 10px 8px;
+    border: 0;
+    border-radius: 9px;
+    background: transparent;
+    color: var(--muted);
+    cursor: pointer;
+  }
+
+  .tab small {
+    display: block;
+    font-family: var(--body);
+    font-weight: 400;
+    font-size: 13px;
+    margin-top: 2px;
+  }
+
+  .tab[aria-selected="true"] {
+    background: var(--surface);
+    color: var(--ink);
+    box-shadow: 0 1px 2px rgba(21, 48, 59, 0.12);
   }
 
   /* ---------- PROGRAM ---------- */
 
-  .program { padding: 0 1.5rem; }
-
-  .section-label {
-    font-family: 'IBM Plex Mono', 'Consolas', 'SFMono-Regular', Menlo, monospace;
-    font-size: 12px;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--teal);
-    text-align: center;
-    margin-bottom: 1rem;
-  }
-
-  .tabs {
-    display: flex;
-    gap: 8px;
-    margin-bottom: 1.25rem;
-  }
-
-  .tab-btn {
-    flex: 1;
-    padding: 12px;
-    font-family: 'Space Grotesk', 'Trebuchet MS', 'Segoe UI Semibold', sans-serif;
-    font-size: 14.5px;
-    font-weight: 700;
-    background: transparent;
-    border: 1.5px solid var(--ink);
-    border-radius: 999px;
-    cursor: pointer;
-    color: var(--ink);
-    transition: all 0.15s ease;
-  }
-
-  .tab-btn.active {
-    background: var(--ink);
-    color: var(--cream);
-  }
-
-  .day-list {
-    display: none;
-    flex-direction: column;
-    background: var(--paper);
+  .day {
+    list-style: none;
+    background: var(--surface);
     border-radius: 14px;
-    padding: 0.5rem 1.5rem;
-    box-shadow: 0 1px 3px rgba(27,26,52,0.08);
+    padding-inline: 16px;
   }
 
-  .day-list.active { display: flex; }
-
-  .program-row {
-    display: flex;
-    align-items: baseline;
-    gap: 14px;
-    padding: 13px 0;
-    border-bottom: 1px dashed #dcdfe4;
+  .row {
+    display: grid;
+    grid-template-columns: 3.4rem 1fr;
+    gap: 12px;
+    padding-block: 14px;
+    border-bottom: 1px solid var(--line);
   }
 
-  .program-row:last-child { border-bottom: none; }
+  .row:last-child { border-bottom: 0; }
 
-  .program-time {
-    font-family: 'IBM Plex Mono', 'Consolas', 'SFMono-Regular', Menlo, monospace;
-    font-size: 14px;
+  .row time {
+    font-family: var(--display);
     font-weight: 600;
-    min-width: 54px;
-    color: var(--coral);
+    font-size: 16px;
+    font-variant-numeric: tabular-nums;
+    color: var(--brand);
+    line-height: 1.4;
   }
 
-  .program-label {
-    font-size: 14.5px;
-    color: var(--ink);
+  .row > div { min-width: 0; }
+
+  .talk {
+    font-weight: 600;
+    line-height: 1.35;
   }
 
-  .program-venue {
-    font-size: 12.5px;
-    color: #9a9fa8;
-    margin-left: 4px;
-  }
-
-  .menu-note {
-    text-align: center;
-    padding: 2.5rem 1.5rem 0.5rem;
-    font-size: 13px;
-    font-family: 'IBM Plex Mono', 'Consolas', 'SFMono-Regular', Menlo, monospace;
-    color: #9a9fa8;
-  }
-
-  .menu-section { padding: 2.5rem 1.5rem 0; }
-
-  .menu-day {
-    background: var(--paper);
-    border: 1px dashed #cfd3da;
-    border-radius: 12px;
-    margin-bottom: 10px;
-    overflow: hidden;
-  }
-
-  .menu-day summary {
-    padding: 14px 18px;
-    font-family: 'Space Grotesk', 'Trebuchet MS', 'Segoe UI Semibold', sans-serif;
-    font-weight: 700;
+  .who {
+    margin-top: 4px;
     font-size: 15px;
-    color: var(--ink);
+    color: var(--muted);
+  }
+
+  .row.plain .talk { font-weight: 400; }
+
+  .row.now {
+    margin-inline: -16px;
+    padding-inline: 16px;
+    background: var(--tint);
+  }
+
+  .now-badge {
+    display: inline-block;
+    vertical-align: 2px;
+    margin-left: 6px;
+    padding: 1px 8px;
+    border-radius: 999px;
+    background: var(--brand);
+    color: var(--surface);
+    font-family: var(--display);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .theme {
+    padding-block: 18px 6px;
+    font-family: var(--display);
+    font-weight: 600;
+    font-size: 14px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--brand);
+    border-bottom: 2px solid var(--drop);
+  }
+
+  .break,
+  .note {
+    padding-block: 10px;
+    padding-left: calc(3.4rem + 12px);
+    font-size: 15px;
+    color: var(--muted);
+    border-bottom: 1px solid var(--line);
+  }
+
+  .note { padding-left: 0; font-style: italic; }
+
+  /* ---------- MEALS ---------- */
+
+  .meals { display: grid; gap: 10px; }
+
+  .meal {
+    background: var(--surface);
+    border-radius: 14px;
+  }
+
+  .meal summary {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 16px;
     cursor: pointer;
     list-style: none;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
   }
 
-  .menu-day summary::-webkit-details-marker { display: none; }
+  .meal summary::-webkit-details-marker { display: none; }
 
-  .menu-day summary::after {
+  .meal summary::after {
     content: "+";
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: 18px;
-    color: var(--teal);
+    margin-left: auto;
+    font-family: var(--display);
+    font-size: 22px;
+    line-height: 1;
+    color: var(--brand);
   }
 
-  .menu-day[open] summary::after { content: "–"; }
+  .meal[open] summary::after { content: "–"; }
 
-  .menu-day-body { padding: 0 18px 18px; }
+  .meal-name {
+    font-family: var(--display);
+    font-weight: 600;
+    font-size: 17px;
+    line-height: 1.25;
+  }
 
-  .menu-group-title {
-    font-family: 'IBM Plex Mono', 'Consolas', 'SFMono-Regular', Menlo, monospace;
-    font-size: 11px;
-    letter-spacing: 0.1em;
+  .meal-when {
+    display: block;
+    font-size: 14px;
+    color: var(--muted);
+  }
+
+  .meal-body { padding: 0 16px 14px; }
+
+  .course {
+    font-family: var(--display);
+    font-weight: 600;
+    font-size: 13px;
+    letter-spacing: 0.08em;
     text-transform: uppercase;
-    color: var(--teal);
-    margin: 14px 0 6px;
+    color: var(--brand);
+    padding-top: 12px;
   }
 
-  .menu-group-title:first-child { margin-top: 0; }
+  .dishes { list-style: none; }
 
-  .menu-item {
+  .dishes li {
     display: flex;
     justify-content: space-between;
-    gap: 10px;
-    padding: 7px 0;
-    border-bottom: 1px dashed #eef0f2;
-    font-size: 14px;
-    color: var(--ink);
+    align-items: baseline;
+    gap: 12px;
+    padding-block: 9px;
+    border-bottom: 1px solid var(--line);
   }
 
-  .menu-item:last-child { border-bottom: none; }
+  .dishes li:last-child { border-bottom: 0; }
 
-  .menu-tags {
-    font-family: 'IBM Plex Mono', 'Consolas', 'SFMono-Regular', Menlo, monospace;
-    font-size: 11.5px;
-    color: #9a9fa8;
+  .dishes span:first-child { min-width: 0; }
+
+  .diet {
+    font-family: var(--display);
+    font-weight: 500;
+    font-size: 14px;
+    color: var(--muted);
     white-space: nowrap;
   }
 
-  .menu-legend {
-    font-family: 'IBM Plex Mono', 'Consolas', 'SFMono-Regular', Menlo, monospace;
-    font-size: 11px;
-    color: #9a9fa8;
-    text-align: center;
-    margin-top: 4px;
-  }
-
-  /* ---------- EXHIBITORS (badge grid) ---------- */
-
-  .exhibitors { padding: 2.5rem 1.5rem 0; }
-
-  .exhibitor-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
-  }
-
-  @media (min-width: 480px) {
-    .exhibitor-grid { grid-template-columns: repeat(3, 1fr); }
-  }
-
-  .exhibitor-item {
-    background: var(--paper);
-    border: 1px dashed #cfd3da;
-    border-radius: 10px;
-    padding: 13px 10px;
-    font-size: 13px;
-    font-weight: 500;
-    color: var(--ink);
-    text-align: center;
-    cursor: pointer;
-    font-family: 'Inter', -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-    width: 100%;
-    transition: border-color 0.15s ease, transform 0.1s ease;
-  }
-
-  .exhibitor-item:hover {
-    border-color: var(--teal);
-    transform: translateY(-1px);
-  }
-
-  /* ---------- MODAL (badge card) ---------- */
-
-  .modal-overlay {
-    display: none;
-    position: fixed;
-    inset: 0;
-    background: rgba(27,26,52,0.55);
-    align-items: center;
-    justify-content: center;
-    padding: 1.5rem;
-    z-index: 10;
-  }
-
-  .modal-overlay.active { display: flex; }
-
-  .modal-box {
-    background: var(--paper);
-    border-radius: 16px;
-    max-width: 420px;
-    width: 100%;
-    padding: 1.9rem;
-    position: relative;
-    border-top: 6px solid var(--coral);
-  }
-
-  .modal-close {
-    position: absolute;
-    top: 14px;
-    right: 16px;
-    border: none;
-    background: none;
-    font-size: 22px;
-    cursor: pointer;
-    color: #9a9fa8;
-    line-height: 1;
-  }
-
-  .modal-eyebrow {
-    font-family: 'IBM Plex Mono', 'Consolas', 'SFMono-Regular', Menlo, monospace;
-    font-size: 11px;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--teal);
-    margin-bottom: 6px;
-  }
-
-  .modal-title {
-    font-family: 'Space Grotesk', 'Trebuchet MS', 'Segoe UI Semibold', sans-serif;
-    font-size: 20px;
-    font-weight: 700;
-    margin-bottom: 14px;
-    color: var(--ink);
-    padding-right: 1.5rem;
-  }
-
-  .modal-row {
+  .legend {
+    margin-top: 12px;
     font-size: 14px;
-    margin-bottom: 8px;
-    color: var(--ink);
+    color: var(--muted);
+    text-align: center;
   }
 
-  .modal-row a { color: var(--teal); text-decoration: none; }
+  /* ---------- COMPANIES ---------- */
 
-  .modal-desc {
-    font-size: 14px;
-    margin: 12px 0 0;
-    padding-top: 12px;
-    border-top: 1px dashed #dcdfe4;
-    color: #3a3e46;
-    line-height: 1.6;
-  }
-
-  /* ---------- QUICK NAV ---------- */
-
-  .quicknav {
-    position: sticky;
-    top: 0;
-    z-index: 5;
+  .companies {
+    list-style: none;
     display: flex;
-    background: var(--cream);
-    border-bottom: 1px solid #e4e0d6;
+    flex-wrap: wrap;
+    gap: 8px;
   }
 
-  .quicknav a {
-    flex: 1;
-    text-align: center;
-    padding: 12px 8px;
-    font-family: 'IBM Plex Mono', 'Consolas', 'SFMono-Regular', Menlo, monospace;
-    font-size: 12.5px;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-    color: var(--ink);
-    text-decoration: none;
-    border-right: 1px solid #e4e0d6;
-  }
-
-  .quicknav a:last-child { border-right: none; }
-
-  /* ---------- EXHIBITOR SEARCH ---------- */
-
-  .exhibitor-search {
-    width: 100%;
-    padding: 12px 16px;
-    font-family: 'Inter', -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-    font-size: 14px;
-    border: 1.5px solid var(--ink);
+  .companies li {
+    background: var(--surface);
+    border: 1px solid var(--line);
     border-radius: 999px;
-    background: var(--paper);
-    color: var(--ink);
-    margin-bottom: 1rem;
+    padding: 8px 14px;
+    font-size: 15px;
   }
 
-  .exhibitor-search::placeholder { color: #9a9fa8; }
-
-  .exhibitor-empty {
-    text-align: center;
-    font-size: 13.5px;
-    color: #9a9fa8;
-    padding: 1rem 0;
-    display: none;
-  }
+  /* ---------- FOOTER ---------- */
 
   .footer {
+    padding-block: 2.5rem 2rem;
     text-align: center;
-    padding: 2.75rem 1.5rem 0.5rem;
-    font-family: 'IBM Plex Mono', 'Consolas', 'SFMono-Regular', Menlo, monospace;
-    font-size: 12px;
-    letter-spacing: 0.04em;
-    color: #9a9fa8;
+    font-size: 14px;
+    color: var(--muted);
   }
 
-  .back-to-top {
-    display: block;
-    text-align: center;
-    margin-top: 1.5rem;
-    font-family: 'IBM Plex Mono', 'Consolas', 'SFMono-Regular', Menlo, monospace;
-    font-size: 12.5px;
-    color: var(--teal);
-    text-decoration: none;
+  .footer a { display: inline-block; margin-top: 10px; text-decoration: none; }
+
+  @media (prefers-reduced-motion: no-preference) {
+    html { scroll-behavior: smooth; }
   }
 </style>
 </head>
 <body>
 <div class="page" id="top">
 
-  <nav class="quicknav">
-    <a href="#ohjelma">Ohjelma</a>
-    <a href="#menu">Menu</a>
-    <a href="#yritykset">Yritykset</a>
+  <nav class="nav" aria-label="Sivun osiot">
+    <ul class="gutter">
+      <li><a href="#ohjelma">Ohjelma</a></li>
+      <li><a href="#ruokailut">Ruokailut</a></li>
+      <li><a href="#mukana">Mukana</a></li>
+    </ul>
   </nav>
 
-  <div class="hero">
-    <img src="hero-bg.png.jpeg" alt="MegaMiljardit — Ikaalinen Spa & Resort, 16.–17.9.2026">
-  </div>
-  <div class="ticket-edge"></div>
+  <header class="hero">
+    <img src="hero.jpg" width="1200" height="600" alt="Kaivopäivät, Ikaalinen Spa, 28.–29.10.2026">
+  </header>
 
-  <div class="intro">
-    <p>Tervetuloa MegaMiljardeille! Täältä löydät molempien päivien ohjelman, menun ja kaikki 31 mukana olevaa yritystä kätevästi yhdestä paikasta koko tapahtuman ajan.</p>
-  </div>
+  <main>
+    <section id="ohjelma" class="gutter">
+      <h2>Ohjelma</h2>
 
-  <div class="program" id="ohjelma">
-    <p class="section-label">Ohjelma</p>
-    <div class="tabs">
-      <button class="tab-btn active" id="tab-ke" onclick="showDay('ke')">Keskiviikko 16.9</button>
-      <button class="tab-btn" id="tab-to" onclick="showDay('to')">Torstai 17.9</button>
-    </div>
-
-    <div class="day-list active" id="day-ke">
-      <div class="program-row"><span class="program-time">10:00</span><span class="program-label">Osastojen rakennus</span></div>
-      <div class="program-row"><span class="program-time">13:00</span><span class="program-label">Tavarantoimittajien keittolounas</span></div>
-      <div class="program-row"><span class="program-time">14:00</span><span class="program-label">Osastot valmiina</span></div>
-      <div class="program-row"><span class="program-time">15:00</span><span class="program-label">MegaMiljardit aukeaa<span class="program-venue">(Spa Arena)</span></span></div>
-      <div class="program-row"><span class="program-time">20:00</span><span class="program-label">Illallinen<span class="program-venue">(Ravintola Kyrös)</span></span></div>
-      <div class="program-row"><span class="program-time">22:00</span><span class="program-label">Trubaduuri Julius Tuomarla<span class="program-venue">(Old Ikaly Pub)</span></span></div>
-    </div>
-
-    <div class="day-list" id="day-to">
-      <div class="program-row"><span class="program-time">09:00</span><span class="program-label">MegaMiljardit aukeaa<span class="program-venue">(Spa Arena)</span></span></div>
-      <div class="program-row"><span class="program-time">12:00</span><span class="program-label">Lounas<span class="program-venue">(Ravintola Kyrös)</span></span></div>
-      <div class="program-row"><span class="program-time">15:00</span><span class="program-label">Messubaari aukeaa</span></div>
-      <div class="program-row"><span class="program-time">19:00</span><span class="program-label">Illallinen<span class="program-venue">(Ravintola Kyrös)</span></span></div>
-      <div class="program-row"><span class="program-time">20:30</span><span class="program-label">Live-bändi<span class="program-venue">("Joku Paikallinen Bändi")</span></span></div>
-      <div class="program-row"><span class="program-time">22:00</span><span class="program-label">Karaoke aukeaa<span class="program-venue">(Old Ikaly Pub)</span></span></div>
-      <div class="program-row"><span class="program-time">23:00</span><span class="program-label">Hodaribaari aukeaa<span class="program-venue">(Ravintola Kyrös)</span></span></div>
-      <div class="program-row"><span class="program-time">00:30</span><span class="program-label">Hyvää yötä</span></div>
-    </div>
-  </div>
-
-  <div class="menu-section" id="menu">
-    <p class="section-label">Illallismenu</p>
-
-    <details class="menu-day">
-      <summary>Keskiviikko 16.9</summary>
-      <div class="menu-day-body">
-        <p class="menu-group-title">Alkupalat &amp; salaatit</p>
-        <div class="menu-item"><span>Talon leipä ja levite</span><span class="menu-tags">L</span></div>
-        <div class="menu-item"><span>Vihreä salaatti ja sitruunavinaigrette</span><span class="menu-tags">M, G</span></div>
-        <div class="menu-item"><span>Waldorfin salaatti ja paahdettua saksanpähkinää</span><span class="menu-tags">L, G</span></div>
-        <div class="menu-item"><span>Savulohi caesar-salaatti</span><span class="menu-tags">L, G</span></div>
-        <div class="menu-item"><span>Tomaatti-mozzarella-salaatti</span><span class="menu-tags">L, G</span></div>
-        <div class="menu-item"><span>Dukkah-porkkanasalaatti, friteerattua kikhernettä</span><span class="menu-tags">M, G</span></div>
-
-        <p class="menu-group-title">Lisukkeet</p>
-        <div class="menu-item"><span>Rosmariiniperunaa</span><span class="menu-tags">L, G</span></div>
-        <div class="menu-item"><span>Paahdettuja seesamijuureksia</span><span class="menu-tags">M, G</span></div>
-
-        <p class="menu-group-title">Pääruoka</p>
-        <div class="menu-item"><span>Ylikypsää naudan rintaa, pippurikermakastiketta</span><span class="menu-tags">L, G</span></div>
-
-        <p class="menu-group-title">Jälkiruoka</p>
-        <div class="menu-item"><span>Mustikkajuustokakku, vaniljamascarpone</span><span class="menu-tags">L, G</span></div>
+      <div class="tabs" role="tablist" aria-label="Päivä">
+        <button class="tab" role="tab" id="tab-ke" aria-controls="day-ke" aria-selected="true" data-day="ke">Keskiviikko<small>28.10.</small></button>
+        <button class="tab" role="tab" id="tab-to" aria-controls="day-to" aria-selected="false" data-day="to">Torstai<small>29.10.</small></button>
       </div>
-    </details>
 
-    <details class="menu-day">
-      <summary>Torstai 17.9</summary>
-      <div class="menu-day-body">
-        <p class="menu-group-title">Alkupalat &amp; salaatit</p>
-        <div class="menu-item"><span>Talon leipä ja levite</span><span class="menu-tags">L</span></div>
-        <div class="menu-item"><span>Vihreä salaatti ja sitruunavinaigrette</span><span class="menu-tags">M, G</span></div>
-        <div class="menu-item"><span>Waldorfin salaatti ja paahdettua saksanpähkinää</span><span class="menu-tags">L, G</span></div>
-        <div class="menu-item"><span>Pestokana-salaatti</span><span class="menu-tags">L, G</span></div>
-        <div class="menu-item"><span>Herne, rucola, feta ja marinoitu shalottisipuli</span><span class="menu-tags">M, G</span></div>
-        <div class="menu-item"><span>Dukkah-porkkanasalaatti, friteerattua kikhernettä</span><span class="menu-tags">M, G</span></div>
-        <div class="menu-item"><span>Rapusalaatti ja Mary Rose -kastiketta</span><span class="menu-tags">L, G</span></div>
+      <ol class="day" id="day-ke" role="tabpanel" aria-labelledby="tab-ke" data-date="2026-10-28">
+        <li class="row plain" data-t="8.45"><time>8.45</time><div><p class="talk">Ilmoittautuminen ja aamukahvi</p></div></li>
+        <li class="row" data-t="9.00"><time>9.00</time><div><p class="talk">Tervetuloa Kaivopäiville!</p><p class="who">Satu Hyötylä, Maanrakennus Jokinen Oy ja Anna-Maija Hallikas, Mykon Oy</p></div></li>
+        <li class="row" data-t="9.10"><time>9.10</time><div><p class="talk">Kaivopäivien avaus ja Ikaalisten Vesi Oy:n omaisuudenhallintamalli</p><p class="who">Tomi Teuho, toimitusjohtaja, Ikaalisten Vesi Oy</p></div></li>
+        <li class="theme">Teema: Kaivoveden laatu ja laadun seuranta</li>
+        <li class="row" data-t="9.35"><time>9.35</time><div><p class="talk">Pohjavesikaivojen hygieniaongelmien aiheuttajia ja kuinka niitä selvitetään</p><p class="who">Timo Friman, tiimipäällikkö, AFRY Finland Oy</p></div></li>
+        <li class="break">Tauko</li>
+        <li class="row" data-t="10.20"><time>10.20</time><div><p class="talk">Tilannekatsaus kaivojen elvytykseen</p><p class="who">Päivi Puronpää-Schäfer, toimitusjohtaja, Cleanwells</p></div></li>
+        <li class="row" data-t="10.40"><time>10.40</time><div><p class="talk">Kaivoveden analyysitulkki</p><p class="who">Johannes Hannuniemi, tutkija, Suomen ympäristökeskus</p></div></li>
+        <li class="row" data-t="11.00"><time>11.00</time><div><p class="talk">Puskurivesisäiliön esittely</p><p class="who">Satu Hyötylä, Maanrakennus Jokinen Oy</p></div></li>
+        <li class="row plain" data-t="11.10"><time>11.10</time><div><p class="talk"><a href="#ruokailut">Lounas</a></p></div></li>
+        <li class="row" data-t="12.10"><time>12.10</time><div><p class="talk">Kaivoveden laatu prosessisuunnittelijan näkökulmasta</p><p class="who">Päivi Peltonen, prosessiasiantuntija, FCG Rakennettu Ympäristö Oy</p></div></li>
+        <li class="row" data-t="12.30"><time>12.30</time><div><p class="talk">Automatisoitu pohjavedenpinnan seuranta ja POVET-raportointi</p><p class="who">Mika Kesseli, myynti- ja projektipäällikkö, vesihuolto, Masinotek Oy</p></div></li>
+        <li class="row" data-t="12.50"><time>12.50</time><div><p class="talk">Pienempien vedenottamoiden ja pumppuasemien kustannustehokas etäseuranta</p><p class="who">Hannu Pihlajamäki, myynti, Vilkase Oy</p></div></li>
+        <li class="row" data-t="13.10"><time>13.10</time><div><p class="talk">Tutustumiskäynnin järjestelyt</p><p class="who">Satu Hyötylä, Maanrakennus Jokinen Oy</p></div></li>
+        <li class="break">Tauko</li>
+        <li class="theme">Teema: Desinfiointi</li>
+        <li class="row" data-t="13.35"><time>13.35</time><div><p class="talk">Kaivojen, säiliöiden ja verkostojen desinfioinnista</p><p class="who">Anna-Maija Hallikas, Mykon Oy ja Satu Hyötylä, Maanrakennus Jokinen Oy</p></div></li>
+        <li class="row" data-t="13.55"><time>13.55</time><div><p class="talk">Vedenkäsittely / desinfiointi</p><p class="who">Miro Roukus, aluemyyntipäällikkö, +GF+/Uponor Infra Oy</p></div></li>
+        <li class="row plain" data-t="14.15"><time>14.15</time><div><p class="talk">Pumppumestarien päiväkahvit</p><p class="who">Ensimmäinen lähtö tutustumiskäynnille</p></div></li>
+        <li class="row" data-t="15.00"><time>15.00</time><div><p class="talk">Kokemuksia vesilaitoksen ja vesijohtoverkoston kloorauksista</p><p class="who">Ari Jousmäki, projekti-insinööri, Lahti Aqua Oy</p></div></li>
+        <li class="row" data-t="15.30"><time>15.30</time><div><p class="talk">Jääpossutus ja -huuhtelu – jäätävän tehokasta puhdistusta</p><p class="who">Jukka Tuppi, työnjohtaja, Jääteho Oy</p></div></li>
+        <li class="row" data-t="15.40"><time>15.40</time><div><p class="talk">Kysymysklinikka</p></div></li>
+        <li class="row plain" data-t="16.15"><time>16.15</time><div><p class="talk">Toinen lähtö tutustumiskäynnille</p></div></li>
+        <li class="row plain" data-t="18.00"><time>18.00</time><div><p class="talk">Etkot ja baari auki näyttelytilassa</p></div></li>
+        <li class="row plain" data-t="19.30"><time>19.30</time><div><p class="talk"><a href="#ruokailut">Illallinen</a></p></div></li>
+      </ol>
 
-        <p class="menu-group-title">Lisukkeet</p>
-        <div class="menu-item"><span>Perunamuusia</span><span class="menu-tags"></span></div>
-        <div class="menu-item"><span>Puolukkahillo ja suolakurkut</span><span class="menu-tags"></span></div>
+      <ol class="day" id="day-to" role="tabpanel" aria-labelledby="tab-to" data-date="2026-10-29" hidden>
+        <li class="note">Tarjolla Flowplussan virvokkeita</li>
+        <li class="row" data-t="8.30"><time>8.30</time><div><p class="talk">EU:n juomavesidirektiivin vaatimuksia talousvesituotteiden turvallisuudelle</p><p class="who">Anna-Maija Hallikas, Mykon Oy</p></div></li>
+        <li class="row" data-t="8.45"><time>8.45</time><div><p class="talk">Mikroaaltotutkat pinnanmittauksessa</p><p class="who">Joona Perttola, tuotepäällikkö, Oy Lining Ab</p></div></li>
+        <li class="theme">Teema: Pumput ja pumppaamot</li>
+        <li class="row" data-t="9.00"><time>9.00</time><div><p class="talk">Pumppaamoiden ennakoiva huolto ja toimintavarmuus</p><p class="who">Jani Hyvärinen, liiketoimintapäällikkö, vesihuolto, Flowplus Oy</p></div></li>
+        <li class="row" data-t="9.20"><time>9.20</time><div><p class="talk">Porakaivopumput ja kestomagneettimoottori</p><p class="who">Mikael Hirvonen, myynti-insinööri, Grundfos Pumput Oy</p></div></li>
+        <li class="break">Tauko</li>
+        <li class="theme">Teema: Vesitornit ja -säiliöt</li>
+        <li class="row" data-t="9.55"><time>9.55</time><div><p class="talk">Vesitornien ja säiliöiden saneerauksien suunnittelu ja toteutus</p><p class="who">Asko Miettinen, johtava asiantuntija, FCG Rakennettu Ympäristö Oy</p></div></li>
+        <li class="row" data-t="10.25"><time>10.25</time><div><p class="talk">Vesitornin kuntoarvio ja kunnostaminen, case Kangasalan Vesi</p><p class="who">Mauno Annala, käyttöpäällikkö, Kangasalan Vesi Oy</p></div></li>
+        <li class="break">Tauko</li>
+        <li class="row" data-t="11.10"><time>11.10</time><div><p class="talk">Lohjan vesitornin rakennusprojekti</p><p class="who">Janne Koivuniemi, vesihuoltopäällikkö, Lohjan kaupungin vesi- ja viemärilaitos</p></div></li>
+        <li class="row" data-t="11.30"><time>11.30</time><div><p class="talk">Oriveden vesitornin saneeraus -projekti</p><p class="who">Mika Kuivanen, kunnallistekniikan päällikkö ja Pasi Hietala, vesilaitoksen vastaava hoitaja, Oriveden kaupunki</p></div></li>
+        <li class="row" data-t="11.50"><time>11.50</time><div><p class="talk">Kaivopäivien yhteenveto</p></div></li>
+        <li class="row plain" data-t="12.00"><time>12.00</time><div><p class="talk"><a href="#ruokailut">Lounas</a></p></div></li>
+        <li class="row" data-t="13.00"><time>13.00</time><div><p class="talk">Testausjärjestelyt talousvesihygieenistä osaamistestiä varten</p></div></li>
+        <li class="row" data-t="13.15"><time>13.15–<wbr>14.15</time><div><p class="talk">Talousvesihygieeninen osaamistesti</p></div></li>
+      </ol>
+    </section>
 
-        <p class="menu-group-title">Pääruoka</p>
-        <div class="menu-item"><span>Hirvipata</span><span class="menu-tags"></span></div>
+    <section id="ruokailut" class="gutter">
+      <h2>Ruokailut</h2>
 
-        <p class="menu-group-title">Jälkiruoka</p>
-        <div class="menu-item"><span>New York cheesecake ja vadelmamelba</span><span class="menu-tags">L</span></div>
+      <div class="meals">
+        <details class="meal">
+          <summary><span><span class="meal-name">Lounas</span><span class="meal-when">Keskiviikko 28.10. klo 11.10</span></span></summary>
+          <div class="meal-body">
+            <ul class="dishes">
+              <li><span>Kasviskeitto</span><span class="diet">L, G</span></li>
+              <li><span>Sitruuna-timjamikanaa (koipireisi)</span><span class="diet">M, G</span></li>
+              <li><span>Kasvis-halloumipaistos</span><span class="diet">L, G</span></li>
+              <li><span>Perunamuusi</span><span class="diet">L, G</span></li>
+              <li><span>Kasviksia</span><span class="diet">M, G</span></li>
+            </ul>
+          </div>
+        </details>
+
+        <details class="meal">
+          <summary><span><span class="meal-name">Illallinen</span><span class="meal-when">Keskiviikko 28.10. klo 19.30</span></span></summary>
+          <div class="meal-body">
+            <p class="course">Alkupalat ja salaatit</p>
+            <ul class="dishes">
+              <li><span>Talon leipä ja levite</span><span class="diet">L</span></li>
+              <li><span>Vihreä salaatti ja sitruunavinaigrette</span><span class="diet">M, G</span></li>
+              <li><span>Waldorfin salaatti ja paahdettua saksanpähkinää</span><span class="diet">L, G</span></li>
+              <li><span>Savulohi caesar-salaatti</span><span class="diet">L, G</span></li>
+              <li><span>Tomaatti-mozzarella-salaatti</span><span class="diet">L, G</span></li>
+              <li><span>Dukkah-porkkanasalaatti, friteerattua kikhernettä</span><span class="diet">M, G</span></li>
+            </ul>
+            <p class="course">Lisukkeet</p>
+            <ul class="dishes">
+              <li><span>Rosmariiniperunaa</span><span class="diet">L, G</span></li>
+              <li><span>Paahdettuja seesamijuureksia</span><span class="diet">M, G</span></li>
+            </ul>
+            <p class="course">Pääruoka</p>
+            <ul class="dishes">
+              <li><span>Ylikypsää naudan rintaa, pippurikermakastiketta</span><span class="diet">L, G</span></li>
+            </ul>
+            <p class="course">Jälkiruoka</p>
+            <ul class="dishes">
+              <li><span>Mustikkajuustokakku, vaniljamascarpone</span><span class="diet">L, G</span></li>
+            </ul>
+          </div>
+        </details>
+
+        <details class="meal">
+          <summary><span><span class="meal-name">Lounas</span><span class="meal-when">Torstai 29.10. klo 12.00</span></span></summary>
+          <div class="meal-body">
+            <ul class="dishes">
+              <li><span>Hernekeitto ja pannukakkua</span><span class="diet">L, (G)</span></li>
+              <li><span>Salsiccia-makkaraa ja piparjuurimajoneesia</span><span class="diet">L, G</span></li>
+              <li><span>Kasvisnakkeja ja piparjuurimajoneesia</span><span class="diet">M, G</span></li>
+              <li><span>Kermaperunoita</span><span class="diet">L, G</span></li>
+              <li><span>Kasviksia</span><span class="diet">M, G</span></li>
+            </ul>
+          </div>
+        </details>
       </div>
-    </details>
 
-    <p class="menu-legend">L = laktoositon · G = gluteeniton · M = maidoton</p>
-  </div>
+      <p class="legend">L = laktoositon · G = gluteeniton · M = maidoton</p>
+    </section>
 
-  <div class="exhibitors" id="yritykset">
-    <p class="section-label">Mukana MegaMiljardeilla</p>
-    <input type="text" class="exhibitor-search" id="exhibitor-search" placeholder="Hae yritystä..." oninput="filterExhibitors(this.value)">
-    <div class="exhibitor-grid" id="exhibitor-grid"></div>
-    <p class="exhibitor-empty" id="exhibitor-empty">Ei osumia haulle.</p>
-    <a class="back-to-top" href="#top">↑ Takaisin ylös</a>
-  </div>
+    <section id="mukana" class="gutter">
+      <h2>Mukana Kaivopäivillä</h2>
+      <ul class="companies">
+        <li>Maanrakennus Jokinen Oy</li>
+        <li>Mykon</li>
+        <li>FCG</li>
+        <li>Flowplus</li>
+        <li>Grundfos</li>
+        <li>Ikaalisten Vesi</li>
+        <li>Jalpa Oy</li>
+        <li>Jääteho</li>
+        <li>KVYY Tutkimus Oy</li>
+        <li>Lining</li>
+        <li>Machinery</li>
+        <li>Masinotek</li>
+        <li>Onninen</li>
+        <li>Pipelife</li>
+        <li>Pumppumestarit</li>
+        <li>Uponor</li>
+        <li>Vilkase</li>
+      </ul>
+    </section>
+  </main>
 
-  <p class="footer">Ikaalinen Spa & Resort · MegaMiljardit 16.–17.9.2026</p>
+  <footer class="footer gutter">
+    <p>Kaivopäivät · Ikaalinen Spa · 28.–29.10.2026</p>
+    <a href="#top">↑ Takaisin ylös</a>
+  </footer>
 
-</div>
-
-<div class="modal-overlay" id="modal-overlay" onclick="if(event.target===this)closeModal()">
-  <div class="modal-box">
-    <button class="modal-close" onclick="closeModal()" aria-label="Sulje">&times;</button>
-    <p class="modal-eyebrow">Näytteilleasettaja</p>
-    <p class="modal-title" id="modal-title"></p>
-    <div id="modal-body"></div>
-  </div>
 </div>
 
 <script>
-var exhibitors = [
-  {name:"Airam Electric Oy Ab", phone:"040 5083 908", contact:"Keijo Tikkanen", email:"keijo.tikkanen@airam.fi", desc:"Valaisimet, lamput, sähkötarvikkeet, paristot, termokset, paristovalot", site:"airam.fi"},
-  {name:"Akowest Oy", phone:"00400 4630 16, 09 7599 610", contact:"Kurt Westerlund", email:"kurt.westerlund@akowest.fi", desc:"Askartelu, reput, koululaistarvikkeet", site:"kidsfun.fi"},
-  {name:"AV-Komponentti Oy", phone:"050 5617 883", contact:"Olli Kaukomaa", email:"olli.kaukomaa@avkomponentti.fi", desc:"Kauneus, terveys, hyvinvointi, keittiön pienkoneet, radiot, RTV tarvikkeet", site:"avkomponentti.fi"},
-  {name:"Cailap Oy Marketing", phone:"050 5674 862, 010 8507 300", contact:"Maarita Eriksson", email:"maarita.eriksson@cailap.fi", desc:"Hiustarvikkeet, kauneusvälineet, koru sekä luku- ja aurinkolasit, oman Cailap-brändin tuotteet, myös Muumi-lisenssituotteet", site:"cailap.com"},
-  {name:"Cenor Finland Oy", phone:"040 751 0009", contact:"Jari Hietala", email:"jari.hietala@cenor.fi", desc:"Mobiilitarvikkeet, varavirtalähteet, lataustarvikkeet, kuulokkeet, audio ja projektorit", site:"cenor.fi"},
-  {name:"Emendo Oy", phone:"+358 400 567 837", contact:"Teemu Finne", email:"teemu.finne@emendo.fi", desc:"Sauna- ja hyvinvointituotteet", site:"emendo.fi, kolosauna.fi"},
-  {name:"Familon | Wendre Finland Oy", phone:"+358 40 7412095", contact:"Mirva Tähtinen", email:"mirva.tahtinen@wendre.com", desc:"Tyynyt, peitot ja sängyt – kaikki parempaan uneen", site:"Familon.com, wendregroup.com"},
-  {name:"Finlayson Co / Vallila & Finlayson", phone:"+358 40 7759148", contact:"Sonja Karjalainen", email:"sonja.karjalainen@finlaysonco.fi", desc:"Sisustustuotteet, kodintekstiilit, matot, verhot, kylpy- ja vuodetekstiilit", site:"Vallila.fi, Finlayson.fi"},
-  {name:"Foxtel Oy", phone:"0400-431906", contact:"Turkka Hovila", email:"turkka.hovila@foxtel.fi", desc:"Teknokemian valmistaja, kosmetiikka-, hygienia- ja puhdistustuotteet", site:"foxtel.fi"},
-  {name:"Fredman group", phone:"040 832 6059", contact:"Myyntipäällikkö Sami Rotkus", email:"sami.rotkus@fredmangroup.com", desc:"Päivittäistavarakauppa", site:"fredmangroup.com"},
-  {name:"Havi Oy", phone:"+358 108 434 022", contact:"Kirsi Ala-Kurikka", email:"kirsi.ala-kurikka@havi.fi", desc:"Kynttilät, kattaus ja kerta-astiat", site:"havi.fi"},
-  {name:"HL Group Oy", phone:"020 7445 200, 040 5701717", contact:"Erkka Hyvärinen", email:"erkka.hyvarinen@hlgroup.fi", desc:"Autokemikaalit, voiteluaineet, suodattimet, akut, pyyhkijän sulat, autotarvikkeet", site:"hlgroup.fi"},
-  {name:"Inbound Finland Oy", phone:"040 5000 774", contact:"Tom Tikkanen", email:"tom.tikkanen@inbound.fi", desc:"Prego, pienkodinkoneet, sähköiset hiustenhoitotuotteet, partakoneet, wellness-tuotteet, hierontatuotteet sekä kulutuselektroniikka", site:"inbound.fi"},
-  {name:"Juhani Mutka Oy", phone:"0400 664 662", contact:"Kimmo Mutka", email:"kimmo.mutka@mutka.fi", desc:"Käsineet", site:"mutka.fi"},
-  {name:"Kauppahuone Harju Oy", phone:"040 586 8930", contact:"Jouni Hakala", email:"jouni.hakala@harju.fi", desc:"Sähkötarvikkeet, LVI-tarvikkeet, lämmitys ja viilennys, puutarhatarvikkeet ja kastelu, tikkaat, peitteet, valaisimet", site:"harju.fi"},
-  {name:"Oy Martinex Ab", phone:"0400-359647", contact:"Sami Nikander", email:"", desc:"Leluja, pelejä ja kodintuotteita (mm. Muumit, Iloleipuri, Peliko)", site:"martinex.fi"},
-  {name:"Metsä Tissue Oy", phone:"0500 6234 92", contact:"Tuure Viinikainen", email:"tuure.viinikainen@metsagroup.com", desc:"Lambi, Serla, Katrin ja SAGA", site:"metsatissue.com"},
-  {name:"Sinituote Oy", phone:"+358 19 7600 200", contact:"Veli Saarela", email:"veli.saarela@sinituote.fi", desc:"Siivoustuotteet sekä vaatehuolto", site:"sini.fi"},
-  {name:"Orkla Care Oy", phone:"040 5094 242", contact:"Mikko Seppänen", email:"mikko.seppanen@orkla.fi", desc:"Teknokemia, haavanhoito, terveystuotteet", site:"orkla.fi"},
-  {name:"Soft Protector Oy", phone:"+358 40 0425 818", contact:"Timo Hirvelä", email:"timo@softcare.fi", desc:"Softcare suoja- ja puhdistusaineet", site:"softcare.fi"},
-  {name:"Orkla Suomi", phone:"040 5473 227", contact:"Toni Autio", email:"toni.autio@orkla.fi", desc:"Taffel, Kantolan ja Panda", site:"orkla.fi"},
-  {name:"Stiga Sports Suomi Oy", phone:"+358 40 5228 468", contact:"Danny Vane-Tempest", email:"dvt@stigasports.se", desc:"Stiga talvituotteet, pelit, potkulaudat, pöytätennis ja muut kesätuotteet", site:"stigasports.se"},
-  {name:"Oy Orthex Finland Ab", phone:"040 7510 040", contact:"Minna Erkkilä", email:"minna.erkkila@orthexgroup.com", desc:"Säilytyslaatikot, lajitteluratkaisut, keittiötuotteet, talousmuovit, ruukut", site:"orthexgroup.com"},
-  {name:"Tactic Games Oy / Ab Plasto Oy", phone:"0449818718", contact:"Tero Sjövall", email:"tero.sjovall@tactic.net", desc:"Lautapelit, palapelit, lelut (Plasto, Lumo Stars, Heros, Picasso Tiles, Bruder), kirjat, pulkat, lumituotteet, darts", site:"tactic.net, plasto.fi"},
-  {name:"Philip Morris Finland Oy", phone:"+358 50 5535357", contact:"Eerika Kapanen", email:"eerika.kapanen@pmi.com", desc:"Nikotiinituotteet", site:"pmi.com"},
-  {name:"Pierre Robert Oy", phone:"040 626 5252", contact:"Kati Määttä", email:"kati.maatta@pierrerobert.fi", desc:"Alusvaatepukeutuminen, uima-asut, sukat ja sukkahousut", site:"blackhorse.fi, norlyn.fi, finnwear.fi, pierrerobert.fi"},
-  {name:"Prima Pet Premium Oy", phone:"045 8519 291", contact:"Katja Saario", email:"katja.saario@hauhau.fi", desc:"Lemmikkieläinruokien valmistaja, maahantuoja ja tukkuliike", site:"primapetpremium.fi"},
-  {name:"RRH Finland Oy", phone:"050 4003 871", contact:"Pekka Räty", email:"pekka.raty@eu.spectrumbrands.com", desc:"Remington-pienlaitteet, Russell Hobbs -pienlaitteet, George Foreman -grillit", site:"fi.remington-europe.com, fi.russellhobbs.com"},
-  {name:"Toolcat Oy", phone:"050 521 6052, 0 44 270 3795", contact:"Juha Parkkinen", email:"juha.parkkinen@toolcat.fi", desc:"Käsityökalut, Berdal, Sulzer, Ecopoxy, Edma, Idealgas, Irwin, Jen, Kapro, Narex, Patrol, Procat, Schwan, Tajima, Urko", site:"toolcat.fi"},
-  {name:"Tukkunet Oy", phone:"+358 20 7349 000", contact:"Timo Taskila", email:"timo.taskila@tukku.net", desc:"Kosmetiikka, lemmikki, lastentarvike, elintarvike, jalkine ja kalastus", site:"tukku.net"},
-  {name:"VARTA Consumer Finland Oy", phone:"0400 845 248, 040 511 5112", contact:"Topias Takkunen", email:"topias.takkunen@varta-ag.com", desc:"VARTA paristot, akkuparistot, taskulamput, varavirtalähteet", site:"varta-consumer.fi"}
-];
+(function () {
+  var tabs = document.querySelectorAll('.tab');
 
-var grid = document.getElementById('exhibitor-grid');
-var buttons = [];
-exhibitors.forEach(function(ex, i){
-  var btn = document.createElement('button');
-  btn.className = 'exhibitor-item';
-  btn.textContent = ex.name;
-  btn.onclick = function(){ openModal(i); };
-  grid.appendChild(btn);
-  buttons.push(btn);
-});
+  function showDay(day) {
+    tabs.forEach(function (tab) {
+      var on = tab.dataset.day === day;
+      tab.setAttribute('aria-selected', on ? 'true' : 'false');
+      document.getElementById(tab.getAttribute('aria-controls')).hidden = !on;
+    });
+  }
 
-function filterExhibitors(query){
-  var q = query.trim().toLowerCase();
-  var visibleCount = 0;
-  buttons.forEach(function(btn, i){
-    var match = exhibitors[i].name.toLowerCase().indexOf(q) !== -1;
-    btn.style.display = match ? '' : 'none';
-    if(match) visibleCount++;
+  tabs.forEach(function (tab) {
+    tab.addEventListener('click', function () { showDay(tab.dataset.day); });
   });
-  document.getElementById('exhibitor-empty').style.display = visibleCount === 0 ? 'block' : 'none';
-}
 
-function openModal(i){
-  var ex = exhibitors[i];
-  document.getElementById('modal-title').textContent = ex.name;
-  var rows = '';
-  if(ex.contact) rows += '<p class="modal-row">' + ex.contact + '</p>';
-  if(ex.phone) rows += '<p class="modal-row">Puh. ' + ex.phone + '</p>';
-  if(ex.email) rows += '<p class="modal-row"><a href="mailto:' + ex.email + '">' + ex.email + '</a></p>';
-  if(ex.site) rows += '<p class="modal-row">' + ex.site + '</p>';
-  if(ex.desc) rows += '<p class="modal-desc">' + ex.desc + '</p>';
-  document.getElementById('modal-body').innerHTML = rows;
-  document.getElementById('modal-overlay').classList.add('active');
-}
+  // Avaa oletuksena oikea päivä ja merkitse tapahtumapäivänä meneillään oleva ohjelmanumero.
+  var now = new Date();
+  var pad = function (n) { return (n < 10 ? '0' : '') + n; };
+  var today = now.getFullYear() + '-' + pad(now.getMonth() + 1) + '-' + pad(now.getDate());
 
-function closeModal(){
-  document.getElementById('modal-overlay').classList.remove('active');
-}
+  if (today >= '2026-10-29') showDay('to');
 
-function showDay(day) {
-  document.getElementById('day-ke').classList.toggle('active', day === 'ke');
-  document.getElementById('day-to').classList.toggle('active', day === 'to');
-  document.getElementById('tab-ke').classList.toggle('active', day === 'ke');
-  document.getElementById('tab-to').classList.toggle('active', day === 'to');
-}
+  var list = document.querySelector('.day[data-date="' + today + '"]');
+  if (!list) return;
+
+  var minutes = now.getHours() * 60 + now.getMinutes();
+  var current = null;
+  list.querySelectorAll('.row').forEach(function (row) {
+    var t = row.dataset.t.split('.');
+    if (+t[0] * 60 + +t[1] <= minutes) current = row;
+  });
+  var rows = list.querySelectorAll('.row');
+  var last = rows[rows.length - 1].dataset.t.split('.');
+  if (current === rows[rows.length - 1] && minutes > +last[0] * 60 + +last[1] + 90) current = null;
+  if (current) {
+    current.classList.add('now');
+    var badge = document.createElement('span');
+    badge.className = 'now-badge';
+    badge.textContent = 'Nyt';
+    current.querySelector('.talk').appendChild(badge);
+  }
+})();
 </script>
 </body>
 </html>
